@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { TiUserDeleteOutline } from 'react-icons/ti';
 import { ContactItem, Text, DeleteButton } from './Contact.styled';
 
 export const Contact = ({ contact, deleteHandler }) => (
@@ -6,7 +7,7 @@ export const Contact = ({ contact, deleteHandler }) => (
     <Text>{contact.name}:</Text>
     <Text>{contact.number}</Text>
     <DeleteButton type="button" id={contact.id} onClick={deleteHandler}>
-      Delete
+      <TiUserDeleteOutline />
     </DeleteButton>
   </ContactItem>
 );

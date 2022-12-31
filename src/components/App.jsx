@@ -1,16 +1,17 @@
-import { useState } from 'react';
-import { nanoid } from 'nanoid';
+import { useSelector, useDispatch } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { GlobalStyle } from './GlobalStyle';
 import { AppWrapper } from './App.styled';
-import { useLocalStorage } from './hooks/useLocalStorage';
+import { addContact, deleteContact } from 'redux/contactsSlice';
+import { setFilter } from 'redux/filterSlice';
 
 export const App = () => {
-  const [contacts, setContacts] = useLocalStorage('contacts', []);
-  const [filter, setFilter] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
 
   const onSubmit = (values, { resetForm }) => {
     if (
@@ -20,25 +21,18 @@ export const App = () => {
       )
     )
       return toast.error(`${values.name} is already in contacts.`);
-
-    setContacts(state => [
-      ...state,
-      {
-        id: nanoid(),
-        name: values.name.trim(),
-        number: values.number.trim(),
-      },
-    ]);
+    
+    dispatch(addContact(values));
 
     resetForm();
   };
 
-  const deleteContact = e => {
+  const onDelete = e => {
     const { id } = e.currentTarget;
-    setContacts(state => state.filter(contact => contact.id !== id));
+    dispatch(deleteContact(id));
   };
 
-  const filterHandler = e => setFilter(e.currentTarget.value.trim());
+  const filterHandler = e => dispatch(setFilter(e.currentTarget.value.trim()));
 
   const contactFiltering = () => {
     return contacts
@@ -60,7 +54,7 @@ export const App = () => {
       <ContactList
         contactList={contactFiltering()}
         value={filter}
-        deleteHandler={deleteContact}
+        deleteHandler={onDelete}
       />
     </AppWrapper>
   );
