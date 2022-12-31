@@ -49,8 +49,8 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm handleSubmit={onSubmit} />
 
-      <h2>Contacts</h2>
       <Filter handleFilter={filterHandler} />
+      <h2>Contacts</h2>
       <ContactList
         contactList={contactFiltering()}
         value={filter}

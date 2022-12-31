@@ -7,8 +7,9 @@ export const ContactItem = styled.li`
 `;
 
 export const DeleteButton = styled.button`
+  display: flex;
+  align-items: center;
   height: 30px;
-  padding: 0 12px;
   color: #fff;
   background-color: #2b4055d0;
   border: none;

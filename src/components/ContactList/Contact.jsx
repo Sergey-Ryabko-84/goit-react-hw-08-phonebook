@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { TiUserDeleteOutline } from 'react-icons/ti';
+import { BiUserX } from 'react-icons/bi';
 import { ContactItem, Text, DeleteButton } from './Contact.styled';
 
 export const Contact = ({ contact, deleteHandler }) => (
@@ -7,7 +7,7 @@ export const Contact = ({ contact, deleteHandler }) => (
     <Text>{contact.name}:</Text>
     <Text>{contact.number}</Text>
     <DeleteButton type="button" id={contact.id} onClick={deleteHandler}>
-      <TiUserDeleteOutline />
+      <BiUserX size={24} />
     </DeleteButton>
   </ContactItem>
 );

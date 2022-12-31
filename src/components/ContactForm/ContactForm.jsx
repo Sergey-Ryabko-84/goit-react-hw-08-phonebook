@@ -46,12 +46,12 @@ export const ContactForm = ({ handleSubmit }) => (
     <FormWrapper>
       <InputLabel htmlFor="name">
         Name
-        <Input type="text" name="name" />
+        <Input type="text" name="name" placeholder="Enter your name" />
         <ErrorMsg name="name" />
       </InputLabel>
       <InputLabel htmlFor="number">
         Number
-        <Input type="tel" name="number" />
+        <Input type="tel" name="number" placeholder="Enter phone number" />
         <ErrorMsg name="number" />
       </InputLabel>
       <SubmitButton type="submit">Add contact</SubmitButton>
