@@ -1,6 +1,8 @@
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import PropTypes from 'prop-types';
+import toast from 'react-hot-toast';
+import { useSelector, useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 import {
   FormWrapper,
   InputLabel,
@@ -36,30 +38,43 @@ const schema = yup.object().shape({
     .required(),
 });
 
+export const ContactForm = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
 
-export const ContactForm = ({ handleSubmit }) => (
-  <Formik
-    initialValues={initialValues}
-    onSubmit={handleSubmit}
-    validationSchema={schema}
-  >
-    <FormWrapper>
-      <InputLabel htmlFor="name">
-        Name
-        <Input type="text" name="name" placeholder="Enter your name" />
-        <ErrorMsg name="name" />
-      </InputLabel>
-      <InputLabel htmlFor="number">
-        Number
-        <Input type="tel" name="number" placeholder="Enter phone number" />
-        <ErrorMsg name="number" />
-      </InputLabel>
-      <SubmitButton type="submit">Add contact</SubmitButton>
-    </FormWrapper>
-  </Formik>
-);
+  const onSubmit = (values, { resetForm }) => {
+    if (
+      contacts.some(
+        contact =>
+          contact.name.toLowerCase() === values.name.trim().toLowerCase()
+      )
+    )
+      return toast.error(`${values.name} is already in contacts.`);
 
+    dispatch(addContact(values));
 
-ContactForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
+    resetForm();
+  };
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={schema}
+    >
+      <FormWrapper>
+        <InputLabel htmlFor="name">
+          Name
+          <Input type="text" name="name" placeholder="Enter your name" />
+          <ErrorMsg name="name" />
+        </InputLabel>
+        <InputLabel htmlFor="number">
+          Number
+          <Input type="tel" name="number" placeholder="Enter phone number" />
+          <ErrorMsg name="number" />
+        </InputLabel>
+        <SubmitButton type="submit">Add contact</SubmitButton>
+      </FormWrapper>
+    </Formik>
+  );
 };
