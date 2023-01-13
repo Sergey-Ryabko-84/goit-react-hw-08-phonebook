@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BiUserX } from 'react-icons/bi';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 import { ContactItem, Text, DeleteButton } from './Contact.styled';
 
 export const Contact = ({ contact }) => {
@@ -15,7 +15,7 @@ export const Contact = ({ contact }) => {
   return (
     <ContactItem>
       <Text>{contact.name}:</Text>
-      <Text>{contact.number}</Text>
+      <Text>{contact.phone}</Text>
       <DeleteButton type="button" id={contact.id} onClick={onDelete}>
         <BiUserX size={24} />
       </DeleteButton>
@@ -27,6 +27,6 @@ Contact.propTypes = {
   contact: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
   }).isRequired,
 };

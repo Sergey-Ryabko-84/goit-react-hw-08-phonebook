@@ -5,15 +5,15 @@ import { Contact } from './Contact';
 import { List } from './ContactList.styled';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
   const filter = useSelector(getFilter);
 
   const contactFiltering = () => {
-    return contacts
-      ? contacts.filter(contact =>
+    return items
+      ? items.filter(contact =>
           contact.name.toLowerCase().includes(filter.toLowerCase())
         )
-      : contacts;
+      : items;
   };
 
   return (

@@ -2,7 +2,8 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import toast from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact, getContacts } from 'redux/contactsSlice';
+import { getContacts } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 import {
   FormWrapper,
   InputLabel,
@@ -40,16 +41,18 @@ const schema = yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
 
   const onSubmit = (values, { resetForm }) => {
     if (
-      contacts.some(
+      items.some(
         contact =>
           contact.name.toLowerCase() === values.name.trim().toLowerCase()
       )
     )
       return toast.error(`${values.name} is already in contacts.`);
+    
+    console.log(values);
 
     dispatch(addContact(values));
 
