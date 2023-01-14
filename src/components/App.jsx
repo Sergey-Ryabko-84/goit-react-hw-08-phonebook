@@ -6,7 +6,9 @@ import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { fetchContacts } from 'redux/operations';
 import { getContacts } from 'redux/contactsSlice';
+import { getUndelete } from 'redux/undeleteSlice';
 import { Loader } from './Loader/Loader';
+import { UndeleteModal } from './UndeleteModal/UndeleteModal';
 import { GlobalStyle } from './GlobalStyle';
 import { AppWrapper } from './App.styled';
 
@@ -14,6 +16,7 @@ import { AppWrapper } from './App.styled';
 export const App = () => {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector(getContacts);
+  const { modalIsOpen } = useSelector(getUndelete);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -30,6 +33,7 @@ export const App = () => {
       {items.length > 0 && <ContactList />}
       {isLoading && !error && <Loader />}
       {error && <p>{error}</p>}
+      {modalIsOpen && <UndeleteModal />}
     </AppWrapper>
   );
 }

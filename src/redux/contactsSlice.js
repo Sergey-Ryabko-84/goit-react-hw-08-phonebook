@@ -10,6 +10,13 @@ const contactsInitialState = {
 const contactsSlise = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
+  reducers: {
+    removeContact(state, action) {
+      state.items = state.items.filter(
+        contact => contact.id !== action.payload
+      );
+    },
+  },
   extraReducers: {
     [fetchContacts.pending](state) {
       state.isLoading = true;
@@ -41,9 +48,9 @@ const contactsSlise = createSlice({
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = state.items.filter(
-        contact => contact.id !== action.payload.id
-      );
+      // state.items = state.items.filter(
+      //   contact => contact.id !== action.payload.id
+      // );
     },
     [deleteContact.rejected](state, action) {
       state.isLoading = false;
@@ -52,7 +59,7 @@ const contactsSlise = createSlice({
   },
 });
 
-// export const { addContact, deleteContact } = contactsSlise.actions;
+export const { removeContact } = contactsSlise.actions;
 // export const { fetchingInProgress, fetchingSuccess, fetchingError } =
 //   contactsSlise.actions;
 export const contactsReducer = contactsSlise.reducer;

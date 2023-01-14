@@ -1,7 +1,13 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BiUserX } from 'react-icons/bi';
-import { deleteContact } from 'redux/operations';
+import { removeContact } from 'redux/contactsSlice';
+import {
+  isModalOpen,
+  setTimerCounter,
+  setContactId,
+} from 'redux/undeleteSlice';
+// import { deleteContact } from 'redux/operations';
 import { ContactItem, Text, DeleteButton } from './Contact.styled';
 
 export const Contact = ({ contact }) => {
@@ -9,7 +15,11 @@ export const Contact = ({ contact }) => {
 
   const onDelete = e => {
     const { id } = e.currentTarget;
-    dispatch(deleteContact(id));
+    dispatch(removeContact(id));
+    dispatch(setContactId(id));
+    dispatch(setTimerCounter(5));
+    dispatch(isModalOpen(true));
+    // dispatch(deleteContact(id));
   };
 
   return (
