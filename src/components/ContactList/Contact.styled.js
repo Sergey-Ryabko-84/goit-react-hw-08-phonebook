@@ -20,6 +20,10 @@ export const DeleteButton = styled.button`
     background-color: #2b4055f0;
     box-shadow: rgba(99, 99, 99, 0.9) 0px 2px 5px 1px;
   }
+  :disabled {
+    background-color: #2b405580;
+    box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 5px 0px;
+  }
 `;
 
 export const Text = styled.p`

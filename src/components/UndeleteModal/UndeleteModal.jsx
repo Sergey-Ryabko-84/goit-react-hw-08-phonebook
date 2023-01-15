@@ -3,7 +3,14 @@ import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContacts } from 'redux/operations';
 import { getUndelete, isModalOpen, setContactId, setTimerCounter } from 'redux/undeleteSlice';
-import { ModalWrapper, Button, Text, Timer } from './UndeleteModal.styled';
+import {
+  ModalWrapper,
+  Wrapper,
+  Button,
+  Timer,
+  Text,
+  Post,
+} from './UndeleteModal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -24,17 +31,19 @@ export const UndeleteModal = () => {
     };
   }, [contactId, dispatch, timerCounter]);
 
-  //   componentDidMount() {
-  //     window.addEventListener('keydown', this.handleKeyDown);
-  //   }
-
-  //   componentWillUnmount() {
-  //     window.removeEventListener('keydown', this.handleKeyDown);
-  //   }
-
-  //   handleKeyDown = e => {
-  //     if (e.code === 'Escape') this.props.onCloseModal(null);
-  //   };
+  useEffect(() => {
+    const deleteContactFromDB = e => {
+      if (e.code === 'Escape') {
+        dispatch(isModalOpen(false));
+        dispatch(deleteContact(contactId));
+      }
+    };
+    
+    window.addEventListener('keydown', deleteContactFromDB);
+    return () => {
+      window.removeEventListener('keydown', deleteContactFromDB);
+    }
+  }, [contactId, dispatch])
 
   const undoDelete = () => {
     dispatch(fetchContacts());
@@ -44,11 +53,17 @@ export const UndeleteModal = () => {
 
   return createPortal(
     <ModalWrapper>
-      <Text>The contact has been deleted</Text>
-      <Timer>{timerCounter}</Timer>
-      <Button type="button" onClick={undoDelete}>
-        Undo delete
-      </Button>
+      <Wrapper>
+        <Text>
+          The contact will be permanently deleted in
+          <Timer>{timerCounter}</Timer>
+          seconds
+        </Text>
+        <Button type="button" onClick={undoDelete}>
+          Undo delete
+        </Button>
+      </Wrapper>
+      <Post>instant deletion by clicking on Esc</Post>
     </ModalWrapper>,
     modalRoot
   );

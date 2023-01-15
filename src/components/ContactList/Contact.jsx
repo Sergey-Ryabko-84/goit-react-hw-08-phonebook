@@ -1,17 +1,18 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BiUserX } from 'react-icons/bi';
 import { removeContact } from 'redux/contactsSlice';
+import { getUndelete } from 'redux/undeleteSlice';
 import {
   isModalOpen,
   setTimerCounter,
   setContactId,
 } from 'redux/undeleteSlice';
-// import { deleteContact } from 'redux/operations';
 import { ContactItem, Text, DeleteButton } from './Contact.styled';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
+  const { modalIsOpen } = useSelector(getUndelete);
 
   const onDelete = e => {
     const { id } = e.currentTarget;
@@ -19,14 +20,18 @@ export const Contact = ({ contact }) => {
     dispatch(setContactId(id));
     dispatch(setTimerCounter(5));
     dispatch(isModalOpen(true));
-    // dispatch(deleteContact(id));
   };
 
   return (
     <ContactItem>
       <Text>{contact.name}:</Text>
       <Text>{contact.phone}</Text>
-      <DeleteButton type="button" id={contact.id} onClick={onDelete}>
+      <DeleteButton
+        type="button"
+        disabled={modalIsOpen}
+        id={contact.id}
+        onClick={onDelete}
+      >
         <BiUserX size={24} />
       </DeleteButton>
     </ContactItem>

@@ -5,15 +5,11 @@ export const ModalWrapper = styled.div`
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 72px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  text-align: center;
   color: #2b4055;
   background-color: #e4e7ea;
   box-shadow: rgba(99, 99, 99, 0.7) 0px -2px 5px 0px;
-  /* z-index: 1200; */
-  animation: isAppearing 1s ease-in-out;
+  animation: isAppearing 500ms ease-in-out;
 
   @keyframes isAppearing {
     0% {
@@ -25,10 +21,15 @@ export const ModalWrapper = styled.div`
   }
 `;
 
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
 export const Button = styled.button`
-  /* margin: auto; */
-  padding: 0 12px;
-  height: 30px;
+  padding: 0 12px;  
+  min-height: 30px;
   color: #fff;
   background-color: #2b4055d0;
   border: none;
@@ -41,14 +42,23 @@ export const Button = styled.button`
   }
 `;
 
+export const Timer = styled.span`
+  padding: 0 4px;
+  color: #2b4055d0;
+  font-weight: 700;
+  font-size: 24px;
+`;
+
 export const Text = styled.p`
   font-weight: 500;
 `;
 
-export const Timer = styled.span`
-  /* padding: 0 20px 0 5px; */
-  color: #2b4055d0;
-  font-weight: 700;
-  font-size: 24px;
+export const Post = styled.p`
+  position: absolute;
+  bottom: -6px;
+  left: 25%;
+  margin-top: 0;
+  font-size: 10px;
+  color: #2b4055b0;
 `;
 
