@@ -2,7 +2,12 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContacts } from 'redux/operations';
-import { getUndelete, isModalOpen, setContactId, setTimerCounter } from 'redux/undeleteSlice';
+import { selectUndelete } from 'redux/selectors';
+import {
+  isModalOpen,
+  setContactId,
+  setTimerCounter,
+} from 'redux/undeleteSlice';
 import {
   ModalWrapper,
   Wrapper,
@@ -16,7 +21,7 @@ const modalRoot = document.querySelector('#modal-root');
 
 export const UndeleteModal = () => {
   const dispatch = useDispatch();
-  const { timerCounter, contactId } = useSelector(getUndelete);
+  const { timerCounter, contactId } = useSelector(selectUndelete);
 
   useEffect(() => {
     const timerId = setInterval(() => {

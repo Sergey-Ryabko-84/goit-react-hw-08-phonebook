@@ -5,8 +5,7 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { fetchContacts } from 'redux/operations';
-import { getContacts } from 'redux/contactsSlice';
-import { getUndelete } from 'redux/undeleteSlice';
+import { selectContacts, selectUndelete } from 'redux/selectors';
 import { Loader } from './Loader/Loader';
 import { UndeleteModal } from './UndeleteModal/UndeleteModal';
 import { GlobalStyle } from './GlobalStyle';
@@ -15,8 +14,8 @@ import { AppWrapper } from './App.styled';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { items, isLoading, error } = useSelector(getContacts);
-  const { modalIsOpen } = useSelector(getUndelete);
+  const { items, isLoading, error } = useSelector(selectContacts);
+  const { modalIsOpen } = useSelector(selectUndelete);
 
   useEffect(() => {
     dispatch(fetchContacts());

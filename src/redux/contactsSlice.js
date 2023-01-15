@@ -40,4 +40,4 @@ const contactsSlise = createSlice({
 
 export const { removeContact } = contactsSlise.actions;
 export const contactsReducer = contactsSlise.reducer;
-export const getContacts = state => state.contacts;
+// export const selectContacts = state => state.contacts;

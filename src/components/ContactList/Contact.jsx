@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BiUserX } from 'react-icons/bi';
 import { removeContact } from 'redux/contactsSlice';
-import { getUndelete } from 'redux/undeleteSlice';
+import { selectUndelete } from 'redux/selectors';
 import {
   isModalOpen,
   setTimerCounter,
@@ -12,7 +12,7 @@ import { ContactItem, Text, DeleteButton } from './Contact.styled';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-  const { modalIsOpen } = useSelector(getUndelete);
+  const { modalIsOpen } = useSelector(selectUndelete);
 
   const onDelete = e => {
     const { id } = e.currentTarget;

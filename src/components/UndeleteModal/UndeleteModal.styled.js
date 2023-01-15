@@ -23,7 +23,7 @@ export const ModalWrapper = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
 `;
 
@@ -50,13 +50,15 @@ export const Timer = styled.span`
 `;
 
 export const Text = styled.p`
+  margin: 16px;
   font-weight: 500;
 `;
 
 export const Post = styled.p`
   position: absolute;
   bottom: -6px;
-  left: 25%;
+  left: calc(16px + 390px / 2);
+  transform: translateX(-50%);
   margin-top: 0;
   font-size: 10px;
   color: #2b4055b0;

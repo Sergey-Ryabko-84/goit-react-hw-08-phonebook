@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import toast from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
 import {
   FormWrapper,
@@ -41,7 +41,7 @@ const schema = yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const { items } = useSelector(getContacts);
+  const { items } = useSelector(selectContacts);
 
   const onSubmit = (values, { resetForm }) => {
     if (
@@ -53,7 +53,6 @@ export const ContactForm = () => {
       return toast.error(`${values.name} is already in contacts.`);
 
     dispatch(addContact(values));
-
     resetForm();
   };
 

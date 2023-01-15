@@ -24,4 +24,4 @@ const undeleteSlise = createSlice({
 
 export const { isModalOpen, setTimerCounter, setContactId } = undeleteSlise.actions;
 export const undeleteReducer = undeleteSlise.reducer;
-export const getUndelete = state => state.undelete;
+// export const selectUndelete = state => state.undelete;
