@@ -13,12 +13,13 @@ import { ContactItem, Text, DeleteButton } from './Contact.styled';
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const { modalIsOpen } = useSelector(selectUndelete);
+  const counterValue = 5;
 
   const onDelete = e => {
     const { id } = e.currentTarget;
     dispatch(removeContact(id));
     dispatch(setContactId(id));
-    dispatch(setTimerCounter(5));
+    dispatch(setTimerCounter(counterValue));
     dispatch(isModalOpen(true));
   };
 
