@@ -7,7 +7,7 @@ import { Filter } from './Filter/Filter';
 import { fetchContacts } from 'redux/operations';
 import { selectContacts, selectUndelete } from 'redux/selectors';
 import { Loader } from './Loader/Loader';
-import { UndeleteModal } from './UndeleteModal/UndeleteModal';
+import { UndeletePanel } from './UndeletePanel/UndeletePanel';
 import { GlobalStyle } from './GlobalStyle';
 import { AppWrapper } from './App.styled';
 
@@ -32,7 +32,7 @@ export const App = () => {
       {items.length > 0 && <ContactList />}
       {isLoading && !error && <Loader />}
       {error && <p>{error}</p>}
-      {modalIsOpen && <UndeleteModal />}
+      {modalIsOpen && <UndeletePanel />}
     </AppWrapper>
   );
 }

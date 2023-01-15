@@ -15,11 +15,11 @@ import {
   Timer,
   Text,
   Post,
-} from './UndeleteModal.styled';
+} from './UndeletePanel.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const UndeleteModal = () => {
+export const UndeletePanel = () => {
   const dispatch = useDispatch();
   const { timerCounter, contactId } = useSelector(selectUndelete);
 
@@ -28,7 +28,7 @@ export const UndeleteModal = () => {
       if (timerCounter <= 0) {
         dispatch(isModalOpen(false));
         dispatch(deleteContact(contactId));
-      };
+      }
       dispatch(setTimerCounter(timerCounter - 1));
     }, 1000);
     return () => {
@@ -43,12 +43,12 @@ export const UndeleteModal = () => {
         dispatch(deleteContact(contactId));
       }
     };
-    
+
     window.addEventListener('keydown', deleteContactFromDB);
     return () => {
       window.removeEventListener('keydown', deleteContactFromDB);
-    }
-  }, [contactId, dispatch])
+    };
+  }, [contactId, dispatch]);
 
   const undoDelete = () => {
     dispatch(fetchContacts());
