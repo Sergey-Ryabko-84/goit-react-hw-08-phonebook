@@ -1,14 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { BiUserX } from 'react-icons/bi';
-import { removeContact } from 'redux/contactsSlice';
-import { selectUndelete } from 'redux/selectors';
+import { FiTrash2 } from 'react-icons/fi';
+import { removeContact } from 'redux/contacts/contactsSlice';
+import { selectUndelete } from 'redux/contacts/selectors';
 import {
   isModalOpen,
   setTimerCounter,
   setContactId,
-} from 'redux/undeleteSlice';
-import { ContactItem, Text, DeleteButton } from './Contact.styled';
+} from 'redux/contacts/undeleteSlice';
+import {
+  ContactItem,
+  Text,
+  DeleteButton,
+  ImgWrapper,
+  ContactInfo,
+} from './Contact.styled';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -25,15 +31,18 @@ export const Contact = ({ contact }) => {
 
   return (
     <ContactItem>
-      <Text>{contact.name}:</Text>
-      <Text>{contact.phone}</Text>
+      <ImgWrapper></ImgWrapper>
+      <ContactInfo>
+        <Text>{contact.name}:</Text>
+        <Text>{contact.number}</Text>
+      </ContactInfo>
       <DeleteButton
         type="button"
         disabled={modalIsOpen}
         id={contact.id}
         onClick={onDelete}
       >
-        <BiUserX size={24} />
+        <FiTrash2 size={18} />
       </DeleteButton>
     </ContactItem>
   );
@@ -43,6 +52,6 @@ Contact.propTypes = {
   contact: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
   }).isRequired,
 };

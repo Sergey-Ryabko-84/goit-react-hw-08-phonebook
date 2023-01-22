@@ -9,18 +9,26 @@ export const FormWrapper = styled(Form)`
   max-width: 500px;
   min-height: 300px;
   background-color: #2b405520;
+  background-color: #ffffff40;
   border-radius: 4px;
   box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 5px 0px;
 `;
 
-export const InputLabel = styled.label`
+export const InputWrapper = styled.label`
   display: flex;
   flex-direction: column;
-  height: 90px;
-  font-weight: 500;
+  height: 82px;
 `;
 
-export const Input = styled(Field)`
+export const InputLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #2b4055d0;
+`;
+
+export const Input = styled(Field)`  
   width: 240px;
   height: 28px;
   margin: 8px 0;
@@ -34,6 +42,8 @@ export const Input = styled(Field)`
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
+  width: 240px;
+  margin-left: 30px;
   color: red;
 `;
 

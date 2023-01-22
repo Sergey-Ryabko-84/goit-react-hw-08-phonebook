@@ -1,11 +1,13 @@
-import { Formik } from 'formik';
+import { Formik  } from 'formik';
 import * as yup from 'yup';
 import toast from 'react-hot-toast';
+import { FiUser, FiPhone } from 'react-icons/fi';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 import {
   FormWrapper,
+  InputWrapper,
   InputLabel,
   Input,
   ErrorMsg,
@@ -63,16 +65,20 @@ export const ContactForm = () => {
       validationSchema={schema}
     >
       <FormWrapper>
-        <InputLabel htmlFor="name">
-          Name
-          <Input type="text" name="name" placeholder="Enter your name" />
-          <ErrorMsg name="name" />
-        </InputLabel>
-        <InputLabel htmlFor="number">
-          Number
-          <Input type="tel" name="number" placeholder="Enter phone number" />
-          <ErrorMsg name="number" />
-        </InputLabel>
+        <InputWrapper>
+          <InputLabel htmlFor="name">
+            <FiUser size={22} />
+            <Input type="text" name="name" placeholder="Enter your name" />
+          </InputLabel>
+          <ErrorMsg component="div" name="name" />
+        </InputWrapper>
+        <InputWrapper>
+          <InputLabel htmlFor="number">
+            <FiPhone size={20} />
+            <Input type="tel" name="number" placeholder="Enter phone number" />
+          </InputLabel>
+          <ErrorMsg component="div" name="number" />
+        </InputWrapper>
         <SubmitButton type="submit">Add contact</SubmitButton>
       </FormWrapper>
     </Formik>

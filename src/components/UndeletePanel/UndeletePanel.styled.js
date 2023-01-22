@@ -23,7 +23,7 @@ export const ModalWrapper = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  /* justify-content: space-around; */
+  justify-content: center;
   align-items: center;
 `;
 
@@ -57,7 +57,8 @@ export const Text = styled.p`
 export const Post = styled.p`
   position: absolute;
   bottom: -6px;
-  left: calc(16px + 390px / 2);
+  /* left: calc(16px + 390px / 2); */
+  left: calc(50% - 111px / 2);
   transform: translateX(-50%);
   margin-top: 0;
   font-size: 10px;

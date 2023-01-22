@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, fetchContacts } from 'redux/operations';
-import { selectUndelete } from 'redux/selectors';
+import { deleteContact, fetchContacts } from 'redux/contacts/operations';
+import { selectUndelete } from 'redux/contacts/selectors';
 import {
   isModalOpen,
   setContactId,
   setTimerCounter,
-} from 'redux/undeleteSlice';
+} from 'redux/contacts/undeleteSlice';
 import {
   ModalWrapper,
   Wrapper,
