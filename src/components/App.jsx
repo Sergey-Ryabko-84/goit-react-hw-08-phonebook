@@ -6,6 +6,7 @@ import { selectAuth } from 'redux/auth/selectors';
 import { GlobalStyle } from './GlobalStyle';
 import { AppWrapper } from './App.styled';
 import { Layout } from './Layout/Layout';
+import { refreshUser } from 'redux/auth/operations';
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { ContactList } from './ContactList/ContactList';
 // import { Filter } from './Filter/Filter';
@@ -31,7 +32,7 @@ export const App = () => {
   // const { modalIsOpen } = useSelector(selectUndelete);
 
   useEffect(() => {
-    // dispatch(refreshUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
