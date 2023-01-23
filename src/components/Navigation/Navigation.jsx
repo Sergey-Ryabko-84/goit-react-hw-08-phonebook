@@ -3,12 +3,14 @@ import { NavLink } from "react-router-dom";
 import { selectAuth } from "redux/auth/selectors";
 
 export const Navigation = () => {
-    const { isLoggedIn} = useSelector(selectAuth)
+    const { isLoggedIn, isRefreshing} = useSelector(selectAuth)
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
-      {isLoggedIn && <NavLink to="/contacts">Contacts</NavLink>}
-      {/* {isLoggedIn && <NavLink to="/contacts/add">Add contact</NavLink>} */}
+      {isLoggedIn && !isRefreshing && (
+        <NavLink to="/contacts">Contacts</NavLink>
+      )}
+      {/* {isLoggedIn && !isRefreshing && <NavLink to="/contacts/add">Add contact</NavLink>} */}
     </nav>
   );
 };

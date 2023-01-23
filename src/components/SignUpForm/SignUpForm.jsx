@@ -27,17 +27,17 @@ export const SignUpForm = () => {
       <Form>
         <label htmlFor="name">
           Name
-          <Field type="text" name="name" placeholder="Enter name" />
+          <Field type="text" name="name" placeholder="Name" />
         </label>
         <ErrorMessage component="div" name="name" />
         <label htmlFor="email">
           Email
-          <Field type="email" name="email" placeholder="Enter your email" />
+          <Field type="email" name="email" placeholder="Email" />
         </label>
         <ErrorMessage component="div" name="email" />
         <label htmlFor="password">
           Password
-          <Field type="password" name="password" placeholder="Enter password" />
+          <Field type="password" name="password" placeholder="Password" />
         </label>
         <ErrorMessage component="div" name="password" />
         <button type="submit">SignUp</button>

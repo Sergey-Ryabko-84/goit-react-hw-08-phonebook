@@ -68,14 +68,14 @@ export const ContactForm = () => {
         <InputWrapper>
           <InputLabel htmlFor="name">
             <FiUser size={22} />
-            <Input type="text" name="name" placeholder="Enter your name" />
+            <Input type="text" name="name" placeholder="Name" />
           </InputLabel>
           <ErrorMsg component="div" name="name" />
         </InputWrapper>
         <InputWrapper>
           <InputLabel htmlFor="number">
             <FiPhone size={20} />
-            <Input type="tel" name="number" placeholder="Enter phone number" />
+            <Input type="tel" name="number" placeholder="Phone number" />
           </InputLabel>
           <ErrorMsg component="div" name="number" />
         </InputWrapper>

@@ -7,6 +7,8 @@ import { GlobalStyle } from './GlobalStyle';
 import { AppWrapper } from './App.styled';
 import { Layout } from './Layout/Layout';
 import { refreshUser } from 'redux/auth/operations';
+import { PrivateRoute, RestrictedRoute } from './Routes';
+import { AppBar } from './AppBar/AppBar';
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { ContactList } from './ContactList/ContactList';
 // import { Filter } from './Filter/Filter';
@@ -41,15 +43,42 @@ export const App = () => {
       <Toaster />
 
       {isRefreshing ? (
-        <b>Refreshing user...</b>
+        <>
+          <AppBar/>
+          <b>Refreshing user...</b>
+        </>
       ) : (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="*" element={<HomePage />} />
-            <Route path="contacts" element={<ContactsPage />} />
-            <Route path="signup" element={<SignUpPage />} />
-            <Route path="signin" element={<SignInPage />} />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<ContactsPage />}
+                />
+              }
+            />
+            <Route
+              path="signup"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<SignUpPage />}
+                />
+              }
+            />
+            <Route
+              path="signin"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<SignInPage />}
+                />
+              }
+            />
           </Route>
         </Routes>
       )}
