@@ -9,5 +9,6 @@ export const SpinnerWrapper = styled.div`
   margin-bottom: 12px;
   font-size: 24px;
   font-weight: 700;
-  color: #2b4055b0;
+  /* color: #212735b0; */
+  color: #c1c9d9;
 `;

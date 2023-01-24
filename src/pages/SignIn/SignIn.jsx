@@ -1,13 +1,14 @@
 import { Helmet } from 'react-helmet';
 import { SignInForm } from 'components/SignInForm/SignInForm';
+import { SignInWrapper } from './SignIn.styled';
 
 export default function SignIn () {
   return (
-    <div>
+    <SignInWrapper>
       <Helmet>
         <title>SignIn</title>
       </Helmet>
       <SignInForm />
-    </div>
+    </SignInWrapper>
   );
 };

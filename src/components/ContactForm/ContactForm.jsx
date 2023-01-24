@@ -7,9 +7,11 @@ import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import {
   FormWrapper,
+  FormTitle,
   InputWrapper,
   InputLabel,
   Input,
+  FilterIcon,
   ErrorMsg,
   SubmitButton,
 } from './ContactForm.styled';
@@ -25,19 +27,10 @@ const phoneRegExp =
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
 const schema = yup.object().shape({
-  name: yup
-    .string()
-    .matches(
-      nameRegExp,
-      "Name may contain only letters, apostrophe('), dash and spaces"
-    )
-    .required(),
+  name: yup.string().matches(nameRegExp, 'invalid name format').required(),
   number: yup
     .string()
-    .matches(
-      phoneRegExp,
-      'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-    )
+    .matches(phoneRegExp, 'invalid phone number format')
     .required(),
 });
 
@@ -65,17 +58,22 @@ export const ContactForm = () => {
       validationSchema={schema}
     >
       <FormWrapper>
+        <FormTitle>Add new contact</FormTitle>
         <InputWrapper>
           <InputLabel htmlFor="name">
-            <FiUser size={22} />
-            <Input type="text" name="name" placeholder="Name" />
+            <FilterIcon>
+              <FiUser size={22} />
+            </FilterIcon>
+            <Input type="text" name="name" placeholder="name" />
           </InputLabel>
           <ErrorMsg component="div" name="name" />
         </InputWrapper>
         <InputWrapper>
           <InputLabel htmlFor="number">
-            <FiPhone size={20} />
-            <Input type="tel" name="number" placeholder="Phone number" />
+            <FilterIcon>
+              <FiPhone size={20} />
+            </FilterIcon>
+            <Input type="tel" name="number" placeholder="phone number" />
           </InputLabel>
           <ErrorMsg component="div" name="number" />
         </InputWrapper>

@@ -1,7 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { FiSearch } from 'react-icons/fi';
 import { setFilter } from 'redux/contacts/filterSlice';
 import { selectFilter } from 'redux/contacts/selectors';
-import { FilterWrapper, FilterInput, FilterLabel } from './Filter.styled';
+import {
+  FilterWrapper,
+  FilterInput,
+  FilterLabel,
+  FilterIcon,
+} from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -12,12 +18,15 @@ export const Filter = () => {
   return (
     <FilterWrapper>
       <FilterLabel htmlFor="filter">
-        Find contacts by name
+        <FilterIcon>
+          <FiSearch />
+        </FilterIcon>
         <FilterInput
           type="text"
           name="filter"
           onChange={filterHandler}
           value={filter}
+          placeholder="search"
         />
       </FilterLabel>
     </FilterWrapper>

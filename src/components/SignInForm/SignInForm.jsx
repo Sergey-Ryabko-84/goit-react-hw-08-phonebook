@@ -1,6 +1,15 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { FiMail, FiKey } from 'react-icons/fi';
 import { logIn } from 'redux/auth/operations';
+import {
+  FormWrapper,
+  InputLabel,
+  Input,
+  FilterIcon,
+  ErrorMsg,
+  SubmitButton,
+} from './SignInForm.styled';
 
 const initialValues = {
   email: '',
@@ -22,19 +31,23 @@ export const SignInForm = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      <Form>
-        <label htmlFor="email">
-          Email
-          <Field type="email" name="email" placeholder="Email" />
-        </label>
-        <ErrorMessage component="div" name="email" />
-        <label htmlFor="password">
-          Password
-          <Field type="password" name="password" placeholder="Password" />
-        </label>
-        <ErrorMessage component="div" name="password" />
-        <button type="submit">SignIn</button>
-      </Form>
+      <FormWrapper>
+        <InputLabel htmlFor="email">
+          <FilterIcon>
+            <FiMail size={22} />
+          </FilterIcon>
+          <Input type="email" name="email" placeholder="Email" />
+        </InputLabel>
+        <ErrorMsg component="div" name="email" />
+        <InputLabel htmlFor="password">
+          <FilterIcon>
+            <FiKey size={22} />
+          </FilterIcon>
+          <Input type="password" name="password" placeholder="Password" />
+        </InputLabel>
+        <ErrorMsg component="div" name="password" />
+        <SubmitButton type="submit">SignIn</SubmitButton>
+      </FormWrapper>
     </Formik>
   );
 };

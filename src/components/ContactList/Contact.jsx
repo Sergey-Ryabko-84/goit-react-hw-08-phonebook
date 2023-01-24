@@ -33,8 +33,10 @@ export const Contact = ({ contact }) => {
     <ContactItem>
       <ImgWrapper></ImgWrapper>
       <ContactInfo>
-        <Text>{contact.name}:</Text>
-        <Text>{contact.number}</Text>
+        <Text>{contact.name}</Text>
+        <Text>
+          <a href={`tel:${contact.number}`}>{contact.number}</a>
+        </Text>
       </ContactInfo>
       <DeleteButton
         type="button"

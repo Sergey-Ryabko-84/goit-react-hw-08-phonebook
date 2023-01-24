@@ -2,36 +2,44 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const FormWrapper = styled(Form)`
+  position: fixed;
+  left: 0;
+  top: calc(64px + 44px + 16px * 2);
   display: inline-flex;
   flex-direction: column;
   gap: 12px;
-  padding: 30px;
-  max-width: 500px;
-  min-height: 300px;
-  background-color: #2b405520;
-  background-color: #ffffff40;
-  border-radius: 4px;
-  box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 5px 0px;
+  padding: 0 30px 16px 30px;
+  width: 300px;
+`;
+
+export const FormTitle = styled.h2`
+  margin: 0;
+  font-size: 1.2em;
 `;
 
 export const InputWrapper = styled.label`
   display: flex;
   flex-direction: column;
-  height: 82px;
+  height: 60px;
 `;
 
 export const InputLabel = styled.label`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 500;
-  color: #2b4055d0;
+  color: #212735d0;
 `;
 
-export const Input = styled(Field)`  
-  width: 240px;
+export const Input = styled(Field)`
+  width: 100%;
   height: 28px;
   margin: 8px 0;
+  padding-left: 36px;
+  font-weight: 500;
+  color: #212735;
+  background-color: #eff2fa;
   border-radius: 4px;
   border: 1px solid #a0a0a050;
   outline: none;
@@ -41,24 +49,40 @@ export const Input = styled(Field)`
   }
 `;
 
+export const FilterIcon = styled.div`
+  position: absolute;
+  left: 8px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  color: #212735;
+`;
+
 export const ErrorMsg = styled(ErrorMessage)`
   width: 240px;
-  margin-left: 30px;
-  color: red;
+  margin: 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #c20d00;
+  text-shadow: 0 0 8px #ffffff80;
 `;
 
 export const SubmitButton = styled.button`
-  margin: auto;
+  margin: 8px auto;
   padding: 0 12px;
+  width: 100%;
   height: 30px;
-  color: #fff;
-  background-color: #2b4055d0;
+  font-weight: 700;
+  color: #212735d0;
+  background-color: #c1c9d9;
   border: none;
   border-radius: 4px;
-  box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 5px 0px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 5px 1px;
 
-  :hover {
-    background-color: #2b4055f0;
-    box-shadow: rgba(99, 99, 99, 0.9) 0px 2px 5px 1px;
+  :hover,
+  :focus {
+    color: #c1c9d9;
+    background-color: #212735;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 2px 5px 1px;
   }
 `;

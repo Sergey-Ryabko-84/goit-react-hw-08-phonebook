@@ -1,6 +1,15 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { FiUser, FiMail, FiKey } from 'react-icons/fi';
 import { signUp } from 'redux/auth/operations';
+import {
+  FormWrapper,
+  InputLabel,
+  Input,
+  FilterIcon,
+  ErrorMsg,
+  SubmitButton,
+} from './SignUpForm.styled';
 
 const initialValues = {
   name: '',
@@ -24,24 +33,30 @@ export const SignUpForm = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      <Form>
-        <label htmlFor="name">
-          Name
-          <Field type="text" name="name" placeholder="Name" />
-        </label>
-        <ErrorMessage component="div" name="name" />
-        <label htmlFor="email">
-          Email
-          <Field type="email" name="email" placeholder="Email" />
-        </label>
-        <ErrorMessage component="div" name="email" />
-        <label htmlFor="password">
-          Password
-          <Field type="password" name="password" placeholder="Password" />
-        </label>
-        <ErrorMessage component="div" name="password" />
-        <button type="submit">SignUp</button>
-      </Form>
+      <FormWrapper>
+        <InputLabel htmlFor="name">
+          <FilterIcon>
+            <FiUser size={22} />
+          </FilterIcon>
+          <Input type="text" name="name" placeholder="Name" />
+        </InputLabel>
+        <ErrorMsg component="div" name="name" />
+        <InputLabel htmlFor="email">
+          <FilterIcon>
+            <FiMail size={22} />
+          </FilterIcon>
+          <Input type="email" name="email" placeholder="Email" />
+        </InputLabel>
+        <ErrorMsg component="div" name="email" />
+        <InputLabel htmlFor="password">
+          <FilterIcon>
+            <FiKey size={22} />
+          </FilterIcon>
+          <Input type="password" name="password" placeholder="Password" />
+        </InputLabel>
+        <ErrorMsg component="div" name="password" />
+        <SubmitButton type="submit">SignUp</SubmitButton>
+      </FormWrapper>
     </Formik>
   );
 };

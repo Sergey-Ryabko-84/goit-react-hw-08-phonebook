@@ -6,9 +6,13 @@ export const ModalWrapper = styled.div`
   left: 0;
   width: 100vw;
   text-align: center;
-  color: #2b4055;
-  background-color: #e4e7ea;
-  box-shadow: rgba(99, 99, 99, 0.7) 0px -2px 5px 0px;
+  color: #eff2fa;
+  background-image: radial-gradient(
+    circle at center,
+    #212735 12%,
+    #21273510 92%
+  );
+  box-shadow: rgba(0, 0, 0, 0.25) 0px -2px 5px 0px;
   animation: isAppearing 500ms ease-in-out;
 
   @keyframes isAppearing {
@@ -28,23 +32,25 @@ export const Wrapper = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 0 12px;  
+  padding: 0 12px;
   min-height: 30px;
-  color: #fff;
-  background-color: #2b4055d0;
+  font-weight: 700;
+  color: #212735d0;
+  background-color: #c1c9d9;
   border: none;
   border-radius: 4px;
-  box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 5px 0px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 5px 1px;
 
   :hover {
-    background-color: #2b4055f0;
-    box-shadow: rgba(99, 99, 99, 0.9) 0px 2px 5px 1px;
+    color: #eff2fa;
+    background-color: #212735;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 2px 5px 1px;
   }
 `;
 
 export const Timer = styled.span`
   padding: 0 4px;
-  color: #2b4055d0;
+  color: #eff2fad0;
   font-weight: 700;
   font-size: 24px;
 `;
@@ -62,6 +68,6 @@ export const Post = styled.p`
   transform: translateX(-50%);
   margin-top: 0;
   font-size: 10px;
-  color: #2b4055b0;
+  color: #c1c9d9b0;
 `;
 

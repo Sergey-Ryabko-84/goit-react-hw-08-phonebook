@@ -8,6 +8,7 @@ import { Filter } from 'components/Filter/Filter';
 import { UndeletePanel } from 'components/UndeletePanel/UndeletePanel';
 import { Loader } from 'components/Loader/Loader';
 import { ContactForm } from 'components/ContactForm/ContactForm';
+import { Wrapper } from './Contacts.styled';
 
 export default function Contacts () {
   const dispatch = useDispatch();
@@ -19,16 +20,16 @@ export default function Contacts () {
   }, [dispatch]);
 
   return (
-    <div>
+    <Wrapper>
       <Helmet>
         <title>Contacts</title>
       </Helmet>
-      <ContactForm />
       <Filter />
+      <ContactForm />
       {items.length > 0 && <ContactList />}
       {isLoading && !error && <Loader />}
       {error && <p>{error}</p>}
       {modalIsOpen && <UndeletePanel />}
-    </div>
+    </Wrapper>
   );
 };

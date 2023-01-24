@@ -5,7 +5,8 @@ export const Loader = () => (
   <SpinnerWrapper>
     Loading
     <RotatingLines
-      strokeColor="#2b4055d0"
+      // strokeColor="#212735d0"
+      strokeColor="#c1c9d9"
       strokeWidth="5"
       animationDuration="0.75"
       width="36"

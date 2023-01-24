@@ -7,12 +7,13 @@ export const ContactItem = styled.li`
   /* flex-wrap: wrap; */
 
   width: 100%;
-  height: 94px;
+  height: 82px;
   margin: 16px 0;
   padding: 12px 20px;
-  background-color: #fff;
+  color: #212735;
+  background-color: #eff2fa;
   border-radius: 12px;
-  box-shadow: #2b40554d 0px 6px 16px 0px;
+  box-shadow: #2127358d 0px 6px 16px 0px;
   /* box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 16px 0px; */
 `;
 
@@ -21,17 +22,17 @@ export const DeleteButton = styled.button`
   align-items: center;
   height: 30px;
   color: #fff;
-  background-color: #2b4055d0;
+  background-color: #212735d0;
   border: none;
   border-radius: 4px;
   box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 5px 0px;
 
   :hover {
-    background-color: #2b4055f0;
+    background-color: #212735f0;
     box-shadow: rgba(99, 99, 99, 0.9) 0px 2px 5px 1px;
   }
   :disabled {
-    background-color: #2b405580;
+    background-color: #21273580;
     box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 5px 0px;
   }
 `;
@@ -39,20 +40,27 @@ export const DeleteButton = styled.button`
 export const Text = styled.p`
   /* flex-grow: 1; */
   padding: 4px 0;
-  margin: 0 8px;
+  margin: 0;
 
   :first-of-type {
     /* flex-grow: 0; */
     font-weight: 500;
   }
+
+  a {
+    color: #212735;
+    :hover {
+      color: #486ec8;
+    }
+  }
 `;
 
 export const ImgWrapper = styled.div`
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   /* overflow: hidden; */
-  background-color: #2b40554d;
+  background-color: #afb4be;
   border-radius: 50%;
 
   ::after {
@@ -60,12 +68,11 @@ export const ImgWrapper = styled.div`
     position: absolute;
     right: 0;
     display: inline-block;
-    width: 24px;
-    height: 24px;
-    background-color: #0080ff;
-    background-color: #bfc5cc;
+    width: 22px;
+    height: 22px;
+    background-color: #afb4be;
     border-radius: 50%;
-    border: solid 4px #fff;
+    border: solid 4px #eff2fa;
   }
 `;
 
