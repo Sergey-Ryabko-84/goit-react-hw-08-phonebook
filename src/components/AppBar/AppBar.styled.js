@@ -5,8 +5,8 @@ export const AppBarWrapper = styled.header`
   width: 100vw;
   height: 64px;
   display: flex;
-  /* align-items: center; */
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 8px 40px;
   /* color: #2b4055; */
   color: #eff2fa;

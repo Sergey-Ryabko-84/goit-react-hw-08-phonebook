@@ -7,9 +7,5 @@ export const AppWrapper = styled.div`
   /* justify-content: center; */
   /* padding: 0 40px; */
   /* /color: #2b4055; */
-  color: #fff;
-
-  a {
-    text-decoration: none;
-  }
+  /* color: #fff; */
 `;

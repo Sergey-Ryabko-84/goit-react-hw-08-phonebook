@@ -18,4 +18,9 @@ export const Link = styled(NavLink)`
     color: #c1c9d9;
   }
 
+  &.active {
+    text-decoration: none;
+    font-weight: 700;
+    color: #2c73a6;
+  }
 `;

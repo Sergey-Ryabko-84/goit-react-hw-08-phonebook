@@ -10,11 +10,20 @@ export const FormWrapper = styled(Form)`
   gap: 12px;
   padding: 0 30px 16px 30px;
   width: 300px;
+
+  @media screen and (max-width: 767px) {
+    position: static;
+  }
 `;
 
 export const FormTitle = styled.h2`
   margin: 0;
   font-size: 1.2em;
+  color: #eff2fa;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const InputWrapper = styled.label`

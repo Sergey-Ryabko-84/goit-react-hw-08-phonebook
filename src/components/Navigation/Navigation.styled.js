@@ -2,9 +2,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const NavWrapper = styled.nav`
-    display: flex;
-    gap: 36px;
-    align-items: center;
+  display: flex;
+  gap: 36px;
+  align-items: center;
+
+  @media screen and (max-width: 767px) {
+    gap: 18px;
+  }
 `;
 
 export const Link = styled(NavLink)`
@@ -15,13 +19,16 @@ export const Link = styled(NavLink)`
   :hover,
   :focus {
     text-decoration: underline;
-    /* text-decoration: solid; */
-    /* font-weight: 700; */
     color: #c1c9d9;
   }
 
   &.active {
     text-decoration: none;
-    color: #8da6d9;
+    font-weight: 700;
+    color: #2c73a6;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
   }
 `;

@@ -4,10 +4,13 @@ export const FilterWrapper = styled.div`
   position: fixed;
   left: 0;
   top: 64px;
-  /* margin-top: 30px; */
   padding: 16px 30px;
   width: 300px;
-  /* background-color: #ffffff40; */
+
+  @media screen and (max-width: 767px) {
+    position: static;
+    padding: 30px 0 0 0;
+  }
 `;
 
 export const FilterInput = styled.input`

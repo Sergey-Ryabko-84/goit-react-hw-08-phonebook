@@ -10,6 +10,7 @@ export const Title = styled.h1`
   align-items: center;
   justify-content: center;
   gap: 24px;
+  padding: 20%;
   font-size: 48px;
   color: #212735d0;
   background-image: radial-gradient(
@@ -18,6 +19,12 @@ export const Title = styled.h1`
     #ffffff40 28%,
     #ffffff00 64%
   );
-  padding: 20%;
   border-radius: 50%;
+
+  @media screen and (max-width: 767px) {
+    gap: 18px;
+    padding: 20% 10%;
+    font-size: 32px;
+    /* transform: scale(0.5); */
+  }
 `;
