@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { FiMail, FiKey } from 'react-icons/fi';
+import { toast } from 'react-hot-toast';
 import { logIn } from 'redux/auth/operations';
 import {
   FormWrapper,
@@ -25,7 +26,15 @@ export const SignInForm = () => {
         email,
         password,
       })
-    );
+    )
+      .unwrap()
+      .then(({ user }) => toast.success(`Welcome, ${user.name}!`))
+      .catch(error => {
+        toast.error(
+          'Oops... Something went wrong. Please refresh the page and try again!'
+        );
+        console.log('Error: ', error);
+      });
     resetForm();
   };
 

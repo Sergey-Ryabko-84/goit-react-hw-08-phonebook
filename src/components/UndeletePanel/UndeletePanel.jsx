@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-hot-toast';
 import { deleteContact, fetchContacts } from 'redux/contacts/operations';
 import { selectUndelete } from 'redux/contacts/selectors';
 import {
@@ -27,7 +28,15 @@ export const UndeletePanel = () => {
     const timerId = setInterval(() => {
       if (timerCounter <= 0) {
         dispatch(isModalOpen(false));
-        dispatch(deleteContact(contactId));
+        dispatch(deleteContact(contactId))
+          .unwrap()
+          .then(({ name }) => toast.success(`${name}'s contact was deleted`))
+          .catch(error => {
+            toast.error(
+              'Oops... Something went wrong. Please refresh the page and try again!'
+            );
+            console.log('Error: ', error);
+          });
       }
       dispatch(setTimerCounter(timerCounter - 1));
     }, 1000);
@@ -40,7 +49,15 @@ export const UndeletePanel = () => {
     const deleteContactFromDB = e => {
       if (e.code === 'Escape') {
         dispatch(isModalOpen(false));
-        dispatch(deleteContact(contactId));
+        dispatch(deleteContact(contactId))
+          .unwrap()
+          .then(({ name }) => toast.success(`${name}'s contact was deleted`))
+          .catch(error => {
+            toast.error(
+              'Oops... Something went wrong. Please refresh the page and try again!'
+            );
+            console.log('Error: ', error);
+          });
       }
     };
 

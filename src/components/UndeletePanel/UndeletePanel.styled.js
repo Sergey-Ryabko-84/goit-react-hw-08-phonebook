@@ -33,8 +33,11 @@ export const Wrapper = styled.div`
 
 export const Button = styled.button`
   padding: 0 12px;
+  min-width: 116px;
   min-height: 30px;
+  margin-right: 4px;
   font-weight: 700;
+  font-size: 16px;
   color: #212735d0;
   background-color: #c1c9d9;
   border: none;
@@ -53,11 +56,27 @@ export const Timer = styled.span`
   color: #eff2fad0;
   font-weight: 700;
   font-size: 24px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 export const Text = styled.p`
   margin: 16px;
   font-weight: 500;
+
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 10px;
+  }
 `;
 
 export const Post = styled.p`
@@ -69,5 +88,9 @@ export const Post = styled.p`
   margin-top: 0;
   font-size: 10px;
   color: #c1c9d9b0;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 

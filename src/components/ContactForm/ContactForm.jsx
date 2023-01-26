@@ -47,7 +47,15 @@ export const ContactForm = () => {
     )
       return toast.error(`${values.name} is already in contacts.`);
 
-    dispatch(addContact(values));
+    dispatch(addContact(values))
+      .unwrap()
+      .then(({ name }) => toast.success(`${name}'s contact has been created`))
+      .catch(error => {
+        toast.error(
+          'Oops... Something went wrong. Please refresh the page and try again!'
+        );
+        console.log('Error: ', error);
+      });
     resetForm();
   };
 

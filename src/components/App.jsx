@@ -1,7 +1,7 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { selectAuth } from 'redux/auth/selectors';
 import { GlobalStyle } from './GlobalStyle';
 import { AppWrapper } from './App.styled';
@@ -22,7 +22,13 @@ export const App = () => {
   const { isRefreshing } = useSelector(selectAuth);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refreshUser())
+      .unwrap()
+      .then()
+      .catch(error => {
+        toast.error('Oops... Something went wrong. Please refresh the page!');
+        console.log('Error: ', error);
+      });
   }, [dispatch]);
 
   return (

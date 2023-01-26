@@ -25,6 +25,5 @@ export const Title = styled.h1`
     gap: 18px;
     padding: 20% 10%;
     font-size: 32px;
-    /* transform: scale(0.5); */
   }
 `;

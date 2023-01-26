@@ -1,11 +1,10 @@
 import styled from 'styled-components';
+import { ImUser } from 'react-icons/im';
 
 export const ContactItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
-
   width: 100%;
   height: 82px;
   margin: 16px 0;
@@ -14,7 +13,6 @@ export const ContactItem = styled.li`
   background-color: #eff2fa;
   border-radius: 12px;
   box-shadow: #2127358d 0px 6px 16px 0px;
-  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 16px 0px; */
 `;
 
 export const DeleteButton = styled.button`
@@ -38,12 +36,10 @@ export const DeleteButton = styled.button`
 `;
 
 export const Text = styled.p`
-  /* flex-grow: 1; */
   padding: 4px 0;
   margin: 0;
 
   :first-of-type {
-    /* flex-grow: 0; */
     font-weight: 500;
   }
 
@@ -59,7 +55,7 @@ export const ImgWrapper = styled.div`
   position: relative;
   width: 56px;
   height: 56px;
-  /* overflow: hidden; */
+  overflow: hidden;
   background-color: #afb4be;
   border-radius: 50%;
 
@@ -67,7 +63,8 @@ export const ImgWrapper = styled.div`
     content: '';
     position: absolute;
     right: 0;
-    display: inline-block;
+    /* display: inline-block; */
+    display: none;
     width: 22px;
     height: 22px;
     background-color: #afb4be;
@@ -79,4 +76,9 @@ export const ImgWrapper = styled.div`
 export const ContactInfo = styled.div`
   flex-grow: 1;
   margin: 0 24px;
+`;
+
+export const UserImg = styled(ImUser)`
+  position: absolute;
+  top: 4px;
 `;

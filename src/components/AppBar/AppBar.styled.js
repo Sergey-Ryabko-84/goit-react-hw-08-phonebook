@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import background from '../../images/backgrounds-gamerwall.jpg';
 
 export const AppBarWrapper = styled.header`
   position: fixed;
@@ -11,4 +12,9 @@ export const AppBarWrapper = styled.header`
   /* color: #2b4055; */
   color: #eff2fa;
   background-color: #00000040;
+  z-index: 1;
+
+  @media screen and (max-width: 1199px) {
+    background-image: url(${background});
+  }
 `;

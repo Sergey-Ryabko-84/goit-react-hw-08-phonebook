@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { toast } from 'react-hot-toast';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectContacts, selectUndelete } from 'redux/contacts/selectors';
 import { ContactList } from 'components/ContactList/ContactList';
@@ -11,14 +12,20 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Wrapper } from './Contacts.styled';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 
-export default function Contacts () {
+export default function Contacts() {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector(selectContacts);
   const { modalIsOpen } = useSelector(selectUndelete);
   const { width } = useWindowDimensions();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContacts())
+      .unwrap()
+      .then()
+      .catch(error => {
+        toast.error('Oops... Something went wrong. Please refresh the page!');
+        console.log('Error: ', error);
+      });
   }, [dispatch]);
 
   return (
@@ -34,4 +41,4 @@ export default function Contacts () {
       {modalIsOpen && <UndeletePanel />}
     </Wrapper>
   );
-};
+}

@@ -14,6 +14,7 @@ import {
   DeleteButton,
   ImgWrapper,
   ContactInfo,
+  UserImg,
 } from './Contact.styled';
 
 export const Contact = ({ contact }) => {
@@ -31,7 +32,9 @@ export const Contact = ({ contact }) => {
 
   return (
     <ContactItem>
-      <ImgWrapper></ImgWrapper>
+      <ImgWrapper>
+        <UserImg size={56} />
+      </ImgWrapper>
       <ContactInfo>
         <Text>{contact.name}</Text>
         <Text>
