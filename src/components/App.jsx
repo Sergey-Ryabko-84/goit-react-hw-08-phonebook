@@ -26,7 +26,7 @@ export const App = () => {
       .unwrap()
       .then()
       .catch(error => {
-        toast.error('Oops... Something went wrong. Please refresh the page!');
+        // toast.error('Oops... Something went wrong. Please refresh the page!');
         console.log('Error: ', error);
       });
   }, [dispatch]);
