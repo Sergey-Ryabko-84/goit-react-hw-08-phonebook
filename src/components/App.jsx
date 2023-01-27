@@ -1,7 +1,7 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { selectAuth } from 'redux/auth/selectors';
 import { GlobalStyle } from './GlobalStyle';
 import { AppWrapper } from './App.styled';
