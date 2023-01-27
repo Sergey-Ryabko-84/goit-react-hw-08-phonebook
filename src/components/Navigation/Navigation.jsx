@@ -1,6 +1,6 @@
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import { useSelector } from 'react-redux';
-// import { NavLink } from "react-router-dom";
+import { ImHome, ImUsers, ImUserPlus } from 'react-icons/im';
 import { selectAuth } from 'redux/auth/selectors';
 import { Link, NavWrapper } from './Navigation.styled';
 
@@ -9,10 +9,23 @@ export const Navigation = () => {
   const { width } = useWindowDimensions();
   return (
     <NavWrapper>
-      <Link to="/">Home</Link>
-      {isLoggedIn && !isRefreshing && <Link to="/contacts">Contacts</Link>}
+      {width < 768 ? (
+        <Link to="/">
+          <ImHome />
+        </Link>
+      ) : (
+        <Link to="/">Home</Link>
+      )}
+      {isLoggedIn && !isRefreshing && width >= 768 && (
+        <Link to="/contacts">Contacts</Link>
+      )}
       {isLoggedIn && !isRefreshing && width < 768 && (
-        <Link to="/addcontact">Add contact</Link>
+        <Link to="/contacts"><ImUsers/></Link>
+      )}
+      {isLoggedIn && !isRefreshing && width < 768 && (
+        <Link to="/addcontact">
+          <ImUserPlus />
+        </Link>
       )}
     </NavWrapper>
   );

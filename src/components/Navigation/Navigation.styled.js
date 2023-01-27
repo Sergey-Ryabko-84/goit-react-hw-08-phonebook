@@ -6,7 +6,7 @@ export const NavWrapper = styled.nav`
   gap: 36px;
   align-items: center;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 459px) {
     gap: 18px;
   }
 `;
@@ -26,9 +26,5 @@ export const Link = styled(NavLink)`
     text-decoration: none;
     font-weight: 700;
     color: #2c73a6;
-  }
-
-  @media screen and (max-width: 767px) {
-    font-size: 16px;
   }
 `;

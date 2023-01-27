@@ -30,7 +30,7 @@ export const UserMenu = () => {
         {width >= 768 && <User>{user.email}</User>}
       </div>
       <Button type="button" onClick={handleLogOut}>
-        Logout
+        {width >= 768 &&('Sign out')}
         <FiLogOut />
       </Button>
     </MenuWrapper>
