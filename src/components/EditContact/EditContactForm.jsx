@@ -4,8 +4,8 @@ import * as yup from 'yup';
 import toast from 'react-hot-toast';
 import { FiUser, FiPhone } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux';
-// import { selectContacts } from 'redux/contacts/selectors';
+import { useSelector } from 'react-redux';
+import { selectContacts } from 'redux/contacts/selectors';
 import { updateContact } from 'redux/contacts/operations';
 import {
   FormWrapper,
@@ -40,21 +40,22 @@ export const EditContactForm = contact => {
     name,
     number,
   };
-  // const { items } = useSelector(selectContacts);
+  const { items } = useSelector(selectContacts);
 
   const onSubmit = (values, { resetForm }) => {
-    // if (
-    //   [...items]
-    //     .splice(
-    //       items.findIndex(element => element.id === values.id),
-    //       1
-    //     )
-    //     .some(
-    //       contact =>
-    //         contact.name.toLowerCase() === name.trim().toLowerCase()
-    //     )
-    // )
-    //   return toast.error(`${values.name} is already in contacts.`);
+    const contacts = [...items];
+    contacts.splice(
+      items.findIndex(element => element.id === values.id),
+      1
+    );
+
+    if (
+      contacts.some(
+        contact =>
+          contact.name.toLowerCase() === values.name.trim().toLowerCase()
+      )
+    )
+      return toast.error(`${values.name} is already in contacts.`);
 
     dispatch(updateContact(values))
       .unwrap()

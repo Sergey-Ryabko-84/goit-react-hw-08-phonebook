@@ -46,7 +46,6 @@ export const updateContact = createAsyncThunk(
         name,
         number,
       });
-      console.log(data)
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.massage);
