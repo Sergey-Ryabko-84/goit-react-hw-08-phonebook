@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FiTrash2 } from 'react-icons/fi';
+import { FiEdit3, FiTrash2 } from 'react-icons/fi';
 import { removeContact } from 'redux/contacts/contactsSlice';
 import { selectUndelete } from 'redux/contacts/selectors';
 import {
@@ -11,7 +11,8 @@ import {
 import {
   ContactItem,
   Text,
-  DeleteButton,
+  Button,
+  Link,
   ImgWrapper,
   ContactInfo,
   UserImg,
@@ -41,14 +42,19 @@ export const Contact = ({ contact }) => {
           <a href={`tel:${contact.number}`}>{contact.number}</a>
         </Text>
       </ContactInfo>
-      <DeleteButton
-        type="button"
-        disabled={modalIsOpen}
-        id={contact.id}
-        onClick={onDelete}
-      >
-        <FiTrash2 size={18} />
-      </DeleteButton>
+      <div>
+        <Link to="/editcontact" state={{ from: { contact } }}>
+          <FiEdit3 size={18} />
+        </Link>
+        <Button
+          type="button"
+          disabled={modalIsOpen}
+          id={contact.id}
+          onClick={onDelete}
+        >
+          <FiTrash2 size={18} />
+        </Button>
+      </div>
     </ContactItem>
   );
 };

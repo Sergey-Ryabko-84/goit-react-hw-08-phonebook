@@ -2,13 +2,14 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   fetchContactsFulfilledReducer,
   addContactFulfilledReducer,
+  updateContactFulfilledReducer,
   anyPendingReducer,
   anyFulfilledReducer,
   anyRejectedReducer,
 } from './contactsSliceReducers';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import { fetchContacts, addContact, updateContact, deleteContact } from './operations';
 
-const extraOperations = [fetchContacts, addContact, deleteContact];
+const extraOperations = [fetchContacts, addContact, updateContact, deleteContact];
 
 const getOperations = type =>
   isAnyOf(...extraOperations.map(operation => operation[type]));
@@ -33,6 +34,7 @@ const contactsSlise = createSlice({
     builder
       .addCase(fetchContacts.fulfilled, fetchContactsFulfilledReducer)
       .addCase(addContact.fulfilled, addContactFulfilledReducer)
+      .addCase(updateContact.fulfilled, updateContactFulfilledReducer)
       .addMatcher(getOperations('pending'), anyPendingReducer)
       .addMatcher(getOperations('fulfilled'), anyFulfilledReducer)
       .addMatcher(getOperations('rejected'), anyRejectedReducer),

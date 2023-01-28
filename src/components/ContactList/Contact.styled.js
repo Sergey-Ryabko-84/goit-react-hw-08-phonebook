@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ImUser } from 'react-icons/im';
+import { NavLink } from 'react-router-dom';
 
 export const ContactItem = styled.li`
   display: flex;
@@ -15,10 +16,34 @@ export const ContactItem = styled.li`
   box-shadow: #2127358d 0px 6px 16px 0px;
 `;
 
-export const DeleteButton = styled.button`
+export const Button = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 30px;
+  margin: 4px;
+  color: #fff;
+  background-color: #212735d0;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(99, 99, 99, 0.7) 0px 2px 5px 0px;
+
+  :hover {
+    background-color: #212735f0;
+    box-shadow: rgba(99, 99, 99, 0.9) 0px 2px 5px 1px;
+  }
+  :disabled {
+    background-color: #21273580;
+    box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 5px 0px;
+  }
+`;
+
+export const Link = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  margin: 4px;
   color: #fff;
   background-color: #212735d0;
   border: none;

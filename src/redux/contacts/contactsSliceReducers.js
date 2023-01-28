@@ -6,6 +6,13 @@ export const addContactFulfilledReducer = (state, action) => {
   state.items.push(action.payload);
 };
 
+export const updateContactFulfilledReducer = (state, action) => {
+  const index = state.items.findIndex(
+    element => element.id === action.payload.id
+  );
+  state.items.splice(index, 1, action.payload);
+};
+
 export const anyPendingReducer = state => {
   state.isLoading = true;
 };
